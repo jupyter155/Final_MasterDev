@@ -161,7 +161,7 @@ df = df[['title','year','rating','runtime','kind','color_info','sound_mix','dire
 
 df.dropna(subset = ["rating"], inplace=True)
 
-month_dict = {'Oct':8, 'Dec':12, 'Aug':8, 'Jul':7, 'Feb':2, 'Nov':11, 'Sep':10, 'May':5,'Mar':3, 'Jan':1, 'Jun':6, 'Apr':3}
+month_dict = {'Oct':10, 'Dec':12, 'Aug':8, 'Jul':7, 'Feb':2, 'Nov':11, 'Sep':9, 'May':5,'Mar':3, 'Jan':1, 'Jun':6, 'Apr':4}
 day_list = []
 for i in range(1,32):
     day_list.append(str(i))
