@@ -33,13 +33,16 @@ public class SparkStreaming {
         Dataset<Row> DF =
                 ds.selectExpr("CAST(value as string)")
                         .select(split(col("value"),",").getItem(0).as("title"),
-//                                split(col("value"),",").getItem(1).as("year"),
-//                                split(col("value"),",").getItem(2).as("rating"),
-//                                split(col("value"),",").getItem(3).as("runtime"),
-//                                split(col("value"),",").getItem(4).as("kind"),
-//                                split(col("value"),",").getItem(5).as("color_info"),
-                                split(col("value"),",").getItem(12).as("votes")
-                                );
+                                split(col("value"),",").getItem(1).as("year"),
+                                split(col("value"),",").getItem(2).as("rating"),
+                                split(col("value"),",").getItem(3).as("runtime"),
+                                split(col("value"),",").getItem(4).as("kind"),
+                                split(col("value"),",").getItem(5).as("color_info"),
+                                split(col("value"),",").getItem(12).as("votes"),
+                                split(col("value"),",").getItem(13).as("country"),
+                                split(col("value"),",").getItem(14).as("day"),
+                                split(col("value"),",").getItem(15).as("month")
+                        );
 //        DF.show();
         DF.writeStream()
                 .outputMode("append")
@@ -49,5 +52,4 @@ public class SparkStreaming {
                 .start().awaitTermination();
     }
 }
-
 

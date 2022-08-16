@@ -38,7 +38,7 @@ public class Producer {
                 String line = scanner.nextLine();
                 log.info(line);
                 producer.send(new ProducerRecord<>(topicName,null,line));
-                TimeUnit.SECONDS.sleep(2);
+                TimeUnit.SECONDS.sleep(1);
                 producer.flush();
 
             }
