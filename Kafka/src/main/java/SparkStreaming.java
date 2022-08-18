@@ -19,6 +19,7 @@ public class SparkStreaming {
                 .appName("Spark Streaming")
 //                .master("local")
 //                .config("spark.driver.bindAddress", "127.0.0.1")
+                .config("spark.scheduler.mode", "FAIR")
                 .getOrCreate();
 
         Dataset<Row> ds = spark
@@ -31,24 +32,23 @@ public class SparkStreaming {
 
         Dataset<Row> DF =
                 ds.selectExpr("CAST(value as string)")
-                        .select(split(col("value"),",").getItem(0).as("title"),
-                                split(col("value"),",").getItem(1).as("year"),
-                                split(col("value"),",").getItem(2).as("rating"),
-                                split(col("value"),",").getItem(3).as("runtime"),
-                                split(col("value"),",").getItem(4).as("kind"),
-                                split(col("value"),",").getItem(5).as("color_info"),
-                                split(col("value"),",").getItem(12).as("votes"),
-                                split(col("value"),",").getItem(13).as("country"),
-                                split(col("value"),",").getItem(14).as("day"),
-                                split(col("value"),",").getItem(15).as("month")
+                        .select(split(col("value"), ",").getItem(0).as("title"),
+                                split(col("value"), ",").getItem(1).as("year"),
+                                split(col("value"), ",").getItem(2).as("rating"),
+                                split(col("value"), ",").getItem(3).as("runtime"),
+                                split(col("value"), ",").getItem(4).as("kind"),
+                                split(col("value"), ",").getItem(5).as("color_info"),
+                                split(col("value"), ",").getItem(12).as("votes"),
+                                split(col("value"), ",").getItem(13).as("country"),
+                                split(col("value"), ",").getItem(14).as("day"),
+                                split(col("value"), ",").getItem(15).as("month")
                         );
 
         DF.writeStream()
                 .outputMode("append")
                 .format("parquet")
                 .option("checkpointLocation", "/user/minhnx12/final/1") ///home/minh/Final_MasterDev/minhnx12/final/1
-                .option("path", "/user/minhnx12/final/2") ///home/minh/Final_MasterDev/minhnx12/final/2
+                .option("path", "/user/minhnx12/final/2") ///home/minh/Final_MasterDev/minhnx12/final/
                 .start().awaitTermination();
     }
 }
-

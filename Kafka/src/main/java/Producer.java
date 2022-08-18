@@ -11,7 +11,7 @@ import static org.apache.kafka.common.requests.DeleteAclsResponse.log;
 
 import java.util.concurrent.TimeUnit;
 public class Producer {
-    static String PATH = "/home/minh/preprocess_data.csv";
+    static String PATH = "/home/minh/Final_MasterDev/data/preprocess_data.csv";
     public static void main(String[] args) throws FileNotFoundException, InterruptedException {
 
         Properties props = new Properties();
