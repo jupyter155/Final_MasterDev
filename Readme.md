@@ -9,3 +9,8 @@
 - Hdfs : luu tru du lieu.
 - PowerBI: Dashboard va phan tich.
 
+#Superset
+- http://172.17.80.21:8089
+- user:pass minh:1
+- dashboard : minhnx12
+
