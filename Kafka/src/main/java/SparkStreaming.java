@@ -13,7 +13,7 @@ public class SparkStreaming {
 
         Logger.getLogger("org").setLevel(Level.OFF);
 
-        // Define a Spark Session
+        // Define a Spark Session20
         SparkSession spark = SparkSession
                 .builder()
                 .appName("Spark Streaming")
@@ -25,8 +25,8 @@ public class SparkStreaming {
         Dataset<Row> ds = spark
                 .readStream()
                 .format("kafka")
-                .option("kafka.bootstrap.servers", "172.17.80.23:9092")
-                .option("subscribe", "minhnx12")
+                .option("kafka.bootstrap.servers", "192.168.193.93:9092")
+                .option("subscribe", "minhnx12_demo")
                 .option("startingOffsets", "earliest")
                 .load();
 
@@ -47,8 +47,8 @@ public class SparkStreaming {
         DF.writeStream()
                 .outputMode("append")
                 .format("parquet")
-                .option("checkpointLocation", "/user/minhnx12/final/1") ///home/minh/Final_MasterDev/minhnx12/final/1
-                .option("path", "/user/minhnx12/final/2") ///home/minh/Final_MasterDev/minhnx12/final/
+                .option("checkpointLocation", "/user/minhnx12/final/checkpoint") ///home/minh/Final_MasterDev/minhnx12/final/1
+                .option("path", "/user/minhnx12/final/output") ///home/minh/Final_MasterDev/minhnx12/final/
                 .start().awaitTermination();
     }
 }
